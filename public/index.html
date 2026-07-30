@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systems Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <div class="logo-area">
+                <div class="pulse-dot"></div>
+                <h1>Mission Control</h1>
+            </div>
+            <p class="subtitle">Zero-Touch Automated CI/CD Pipeline</p>
+        </header>
+
+        <main>
+            <div class="glass-panel status-panel">
+                <div class="status-header">
+                    <h2>API Health</h2>
+                    <span class="status-badge live">LIVE</span>
+                </div>
+                <p id="api-message" class="status-message">Checking status...</p>
+                
+                <div class="metrics">
+                    <div class="metric-card">
+                        <span class="metric-value">99.9%</span>
+                        <span class="metric-label">Uptime</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">0</span>
+                        <span class="metric-label">Failed Deploys</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">4s</span>
+                        <span class="metric-label">Avg Deploy Time</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel pipeline-panel">
+                <h2>Pipeline Stages</h2>
+                <div class="pipeline-stages">
+                    <div class="stage success">
+                        <div class="stage-icon">✓</div>
+                        <div class="stage-info">
+                            <h3>Source</h3>
+                            <p>GitHub Repository</p>
+                        </div>
+                    </div>
+                    <div class="connector"></div>
+                    <div class="stage success">
+                        <div class="stage-icon">✓</div>
+                        <div class="stage-info">
+                            <h3>CI / Testing</h3>
+                            <p>GitHub Actions & Jest</p>
+                        </div>
+                    </div>
+                    <div class="connector"></div>
+                    <div class="stage success">
+                        <div class="stage-icon">✓</div>
+                        <div class="stage-info">
+                            <h3>Build</h3>
+                            <p>Docker Container</p>
+                        </div>
+                    </div>
+                    <div class="connector"></div>
+                    <div class="stage pending">
+                        <div class="stage-icon">⚙</div>
+                        <div class="stage-info">
+                            <h3>Deploy</h3>
+                            <p>Ready for Production</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simple script to fetch API health and update UI
+        fetch('/api/health')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('api-message').textContent = data.message;
+            })
+            .catch(error => {
+                document.getElementById('api-message').textContent = 'Error connecting to API';
+                document.getElementById('api-message').style.color = '#ff6b6b';
+            });
+    </script>
+</body>
+</html>

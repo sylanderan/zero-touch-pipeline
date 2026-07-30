@@ -1,0 +1,25 @@
+{
+  "name": "zero-touch-pipeline",
+  "version": "1.0.0",
+  "description": "A visually stunning Server Status Dashboard with automated CI/CD pipeline",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "devops",
+    "ci/cd",
+    "docker",
+    "github-actions"
+  ],
+  "author": "Fresher DevOps Learner",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}
